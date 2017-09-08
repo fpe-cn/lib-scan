@@ -53,11 +53,10 @@ module.exports.upload = function upload (config, strHTTPServer, strActionPage, i
         if (config.scannedImage) {
             if (config.scannedImage.HowManyImagesInBuffer === 0) return
 
-            const OnHttpUploadFailure = (err) => {
-                console.warn(err + 'fail on http')
-                reject(err)
+            const OnHttpUploadFailure = (errorCode, errorString, sHttpResponse) => {
+                console.warn('fail (' + errorCode + ') on httpRequest : ' + errorString + sHttpResponse)
+                reject(errorCode)
             }
-
             const OnHttpUploadSuccess = () => resolve(true)
 
             var Digital = new Date()
