@@ -23780,7 +23780,7 @@ var ___ii = 0,
         }
         return null
     };
-    var R = function() {
+    F.LaunchInstall = function() {
         if (!a.isUndefined(F.ProductKey)) {
             setTimeout(function() {
                 var T = a.env.bFileSystem,
@@ -23821,13 +23821,6 @@ var ___ii = 0,
             setTimeout(R, 100)
         }
     };
-    a.ready(function() {
-        var T = a.get("dynamsoft_waiting");
-        if (T) {
-            T.parentNode.removeChild(T)
-        }
-        R()
-    });
     if (!H.Dynamsoft_OnClickInstallButton) {
         H.Dynamsoft_OnClickInstallButton = function() {
             a.hide("dwt-btn-install");
@@ -23871,3 +23864,6 @@ var ___ii = 0,
         })
     }
 })(Dynamsoft.Lib, Dynamsoft.WebTwainEnv);
+
+module.exports.Dynamsoft = Dynamsoft
+module.exports.EnumDWT_PixelType = EnumDWT_PixelType

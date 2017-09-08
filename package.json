@@ -1,0 +1,23 @@
+{
+  "name": "scan",
+  "version": "1.0.0",
+  "description": "Import scanner lib",
+  "private": false,
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimalusa/scan.git"
+  },
+  "keywords": [
+    "scan"
+  ],
+  "author": "renaud.dierickx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dimalusa/scan/issues"
+  },
+  "homepage": "https://github.com/dimalusa/scan#readme"
+}
