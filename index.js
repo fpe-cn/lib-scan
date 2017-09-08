@@ -10,6 +10,7 @@ module.exports.install = function(config) {
     Dyst.Dynamsoft.WebTwainEnv.AutoLoad = config.AutoLoad;
     Dyst.Dynamsoft.WebTwainEnv.Containers = config.Containers;
     Dyst.Dynamsoft.WebTwainEnv.ProductKey = config.ProductKey;
+    Dyst.Dynamsoft.WebTwainEnv.LogLevel = config.LogLevel;
     Dyst.Dynamsoft.WebTwainEnv.Trial = config.Trial;
     Dyst.Dynamsoft.WebTwainEnv.ActiveXInstallWithCAB = config.ActiveXInstallWithCAB;
     Dyst.Dynamsoft.WebTwainEnv.ResourcesPath = config.ResourcesPath;
