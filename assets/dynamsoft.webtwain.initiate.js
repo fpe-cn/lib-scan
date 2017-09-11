@@ -12121,7 +12121,8 @@ var EnumDWT_Error = {
         if (e) {
             Dynamsoft.Lib.showProgress(n, f, false)
         } else {
-            d.showMask(f)
+            // Suppression d'un mask overlay
+            // d.showMask(f)
         }
         n._innerSend(f, l, true, function() {
             n.__bLoadingImage = false;
