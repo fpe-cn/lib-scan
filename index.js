@@ -28,14 +28,23 @@ module.exports.load = function() {
     return Dyst.Dynamsoft.WebTwainEnv.GetWebTwain('dwtcontrolContainer');
 }
 
-module.exports.scan = function scan (config){
+module.exports.scan = function scan (config) {
     return new Promise(resolve => {
         if (config.scannedImage) {
 
             var OnAcquireImageSuccess, OnAcquireImageFailure;
 
-            OnAcquireImageFailure = () => config.scannedImage.CloseSource();
-            OnAcquireImageSuccess = () => resolve(config)
+            OnAcquireImageFailure = (errorCode, errorString) => {
+                console.warn('Scan image N°' + (config.scannedImage.CurrentImageIndexInBuffer + 2) + ' ==> failure')
+                console.error(errorString);
+                config.scannedImage.CloseSource();
+                reject(errorCode)
+            }
+
+            OnAcquireImageSuccess = () => {
+                console.debug('Scan image N°' + (config.scannedImage.CurrentImageIndexInBuffer + 1) + ' ==> success')
+                resolve(config)
+            }
 
             config.scannedImage.OpenSource();
             config.scannedImage.IfShowUI = false;
@@ -43,18 +52,21 @@ module.exports.scan = function scan (config){
             config.scannedImage.PixelType = Dyst.EnumDWT_PixelType.TWPT_RGB;
             config.scannedImage.Resolution = config.resolution;
             config.scannedImage.IfDisableSourceAfterAcquire = true;	// Scanner source will be disabled/closed automatically after the scan.
+
             config.scannedImage.AcquireImage(OnAcquireImageSuccess, OnAcquireImageFailure);
         }
     })
 }
 
-module.exports.upload = function upload (config, strHTTPServer, strActionPage, imageIndexBuffer = null) {
+module.exports.upload = function upload (config, strHTTPServer, strActionPage, imageIndexBuffer, uploadFilename) {
     return new Promise((resolve, reject) => {
         if (config.scannedImage) {
             if (config.scannedImage.HowManyImagesInBuffer === 0) {
                 console.warn('Trying upload but HowManyImagesInBuffer = ' + config.scannedImage.HowManyImagesInBuffer)
                 return
             }
+
+            console.debug('Start uploading image n°' + (imageIndexBuffer + 1) + ' from buffer of ' + config.scannedImage.HowManyImagesInBuffer + ' images')
 
             const OnHttpUploadFailure = (errorCode, errorString, httpResponse) => {
                 if(httpResponse.includes('Resource is created')) {
@@ -65,9 +77,6 @@ module.exports.upload = function upload (config, strHTTPServer, strActionPage, i
                 }
             }
             const OnHttpUploadSuccess = () => resolve(true)
-
-            var Digital = new Date()
-            var uploadFilename = Digital.getMilliseconds()
 
             if (config.format === 'pdf') {
                 config.scannedImage.SelectedImagesCount = 2
