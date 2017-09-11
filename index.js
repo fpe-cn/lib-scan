@@ -14,6 +14,8 @@ module.exports.install = function(config) {
     Dyst.Dynamsoft.WebTwainEnv.Trial = config.Trial;
     Dyst.Dynamsoft.WebTwainEnv.ActiveXInstallWithCAB = config.ActiveXInstallWithCAB;
     Dyst.Dynamsoft.WebTwainEnv.ResourcesPath = config.ResourcesPath;
+    Dyst.Dynamsoft.WebTwainEnv.IfShowProgressBar = config.IfShowProgressBar;
+    Dyst.Dynamsoft.WebTwainEnv.IfShowUI = config.IfShowUI;
     Dyst.Dynamsoft.WebTwainEnv.LaunchInstall();
     console.debug('stop install');
 
@@ -48,6 +50,7 @@ module.exports.scan = function scan (config) {
 
             config.scannedImage.OpenSource();
             config.scannedImage.IfShowUI = false;
+            config.scannedImage.IfShowProgressBar = false;
             config.scannedImage.IfShowIndicator = false;
             config.scannedImage.PixelType = Dyst.EnumDWT_PixelType.TWPT_RGB;
             config.scannedImage.Resolution = config.resolution;
@@ -77,6 +80,18 @@ module.exports.upload = function upload (config, strHTTPServer, strActionPage, i
                 }
             }
             const OnHttpUploadSuccess = () => resolve(true)
+
+            if (window.location.protocol !== 'https:') {
+                config.scannedImage.HTTPPort = 80;
+                config.scannedImage.IfSSL = false;
+                // if 80 is the port number of non-secure port
+            }
+            else {
+                config.scannedImage.HTTPPort = 443;
+                config.scannedImage.IfSSL = true;
+                // if 443 is the port number of secure port
+            }
+            config.scannedImage.IfShowCancelDialogWhenImageTransfer = false;
 
             if (config.format === 'pdf') {
                 config.scannedImage.SelectedImagesCount = 2
