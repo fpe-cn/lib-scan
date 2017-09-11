@@ -51,11 +51,18 @@ module.exports.scan = function scan (config){
 module.exports.upload = function upload (config, strHTTPServer, strActionPage, imageIndexBuffer = null) {
     return new Promise((resolve, reject) => {
         if (config.scannedImage) {
-            if (config.scannedImage.HowManyImagesInBuffer === 0) return
+            if (config.scannedImage.HowManyImagesInBuffer === 0) {
+                console.warn('Trying upload but HowManyImagesInBuffer = ' + config.scannedImage.HowManyImagesInBuffer)
+                return
+            }
 
-            const OnHttpUploadFailure = (errorCode, errorString, sHttpResponse) => {
-                console.warn('fail (' + errorCode + ') on httpRequest : ' + errorString + sHttpResponse)
-                reject(errorCode)
+            const OnHttpUploadFailure = (errorCode, errorString, httpResponse) => {
+                if(httpResponse.includes('Resource is created')) {
+                    resolve(true)
+                } else {
+                    console.warn('fail (' + errorCode + ') on httpRequest : ' + errorString + httpResponse)
+                    reject(errorCode)
+                }
             }
             const OnHttpUploadSuccess = () => resolve(true)
 
