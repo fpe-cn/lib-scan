@@ -72,7 +72,8 @@ module.exports.upload = function upload (config, strHTTPServer, strActionPage, i
             console.debug('Start uploading image n°' + (imageIndexBuffer + 1) + ' from buffer of ' + config.scannedImage.HowManyImagesInBuffer + ' images')
 
             const OnHttpUploadFailure = (errorCode, errorString, httpResponse) => {
-                if(httpResponse.includes('Resource is created')) {
+                const response = JSON.parse(httpResponse)
+                if(response.message.value.includes('Resource is created')) {
                     resolve(true)
                 } else {
                     console.warn('fail (' + errorCode + ') on httpRequest : ' + errorString + httpResponse)
