@@ -5,7 +5,8 @@
   "private": false,
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "node myapp.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/dimalusa/scan/issues"
   },
-  "homepage": "https://github.com/dimalusa/scan#readme"
+  "homepage": "https://github.com/dimalusa/scan#readme",
+  "engines": {
+    "node": "~4.0"
+  },
+  "devDependencies": {
+    "finalhandler": "^1.0.4",
+    "serve-static": "^1.12.4"
+  }
 }
