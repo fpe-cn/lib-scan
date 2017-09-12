@@ -10,4 +10,4 @@ var server = http.createServer(function(req, res) {
   serve(req, res, done);
 });
 
-server.listen(process.env.PORT, '0.0.0.0');
+server.listen(process.env.PORT || 8000, '0.0.0.0');
