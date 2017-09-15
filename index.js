@@ -16,14 +16,14 @@ module.exports.install = function(config) {
     Dyst.Dynamsoft.WebTwainEnv.ResourcesPath = config.ResourcesPath;
     Dyst.Dynamsoft.WebTwainEnv.IfShowProgressBar = config.IfShowProgressBar;
     Dyst.Dynamsoft.WebTwainEnv.IfShowUI = config.IfShowUI;
-    Dyst.Dynamsoft.WebTwainEnv.LaunchInstall();
+    // Dyst.Dynamsoft.WebTwainEnv.LaunchInstall();
     console.debug('stop install');
 
     // This event seems to don't work
-    Dyst.Dynamsoft.WebTwainEnv.RegisterEvent('OnWebTrainReady', function() {
-        console.log('OnWebTrainReady');
-        Dyst.Dynamsoft.WebTwainEnv.GetWebTwain('dwtcontrolContainer');
-    });
+    // Dyst.Dynamsoft.WebTwainEnv.RegisterEvent('OnWebTrainReady', function() {
+    //     console.log('OnWebTrainReady');
+    //     Dyst.Dynamsoft.WebTwainEnv.GetWebTwain('dwtcontrolContainer');
+    // });
 }
 
 module.exports.load = function() {
