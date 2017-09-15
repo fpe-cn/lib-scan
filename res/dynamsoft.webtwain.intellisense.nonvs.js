@@ -5,7 +5,7 @@
 *
 * Copyright 2017, Dynamsoft Corporation 
 * Author: Dynamsoft Support Team
-* Version: 13.1
+* Version: 12.3
 */
 
 /**
@@ -1222,25 +1222,11 @@ var EnumDWT_UploadDataFormat = {
 };
 
 
-/** MouseShape */
 var EnumDWT_MouseShape = {
 	Default: 0,
 	Hand: 1,
 	Crosshair: 2,
 	Zoom: 3
-};
-
-/** Language */
-var EnumDWT_Language = {
-	English: 0,
-	French: 1,
-	Arabic: 2,
-	Spanish: 3,
-	Portuguese: 4,
-	German: 5,
-	Italian: 6,
-	Russian: 7,
-	Chinese: 8
 };
 
 /**
@@ -3581,23 +3567,11 @@ WebTwain.prototype.SetSelectedImageArea = function(sImageIndex, left, top, right
  * @method WebTwain#ConvertToBase64 
  * @param {Array} indices indices specifies which images are to be converted to base64.
  * @param {EnumDWT_ImageType} enumImageType the image format in which the images are to be converted to base64.
- * @param {function} asyncSuccessFunc the function to call when the convert succeeds. Please refer to the function prototype OnSuccess.
- * @param {function} asyncFailureFunc the function to call when the convert fails. Please refer to the function prototype OnFailure.
+ * @param {function} asyncSuccessFunc the function to call when the upload succeeds. Please refer to the function prototype OnSuccess.
+ * @param {function} asyncFailureFunc the function to call when the upload fails. Please refer to the function prototype OnFailure.
  * @return {bool}
  */
 WebTwain.prototype.ConvertToBase64 = function(indices, enumImageType, asyncSuccessFunc, asyncFailureFunc) {
-};
-
-/**
- * Converts the images specified by the indices to binary.
- * @method WebTwain#ConvertToBlob 
- * @param {Array} indices indices specifies which images are to be converted to binary.
- * @param {EnumDWT_ImageType} enumImageType the image format in which the images are to be converted to binary.
- * @param {function} asyncSuccessFunc the function to call when the convert succeeds. Please refer to the function prototype OnSuccess.
- * @param {function} asyncFailureFunc the function to call when the convert fails. Please refer to the function prototype OnFailure.
- * @return {bool}
- */
-WebTwain.prototype.ConvertToBlob = function(indices, enumImageType, asyncSuccessFunc, asyncFailureFunc) {
 };
 
 /**
@@ -3609,17 +3583,6 @@ WebTwain.prototype.ConvertToBlob = function(indices, enumImageType, asyncSuccess
  * @return {string}
  */
 WebTwain.prototype.GetImageURL = function(index, iWidth, iHeight) {
-};
-
-/**
- * Returns the URL of an image specified by index, if iWidth or iHeight is set to -1, you get the original image, otherwise you get the image with specified iWidth or iHeight while keeping the same aspect ratio.
- * @method WebTwain#GetImageURL 
- * @param {short} index the index of the image.
- * @param {int} iWidth the width of the image.
- * @param {int} iHeight the height of the image.
- * @return {string}
- */
-WebTwain.prototype.GetImagePartURL = function (index, iWidth, iHeight) {
 };
 
 /**

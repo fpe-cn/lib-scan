@@ -5,7 +5,7 @@
 *
 * Copyright 2017, Dynamsoft Corporation 
 * Author: Dynamsoft Support Team
-* Version: 13.1
+* Version: 12.3
 */
 
 /**
@@ -1153,25 +1153,11 @@ var EnumDWT_UploadDataFormat = {
 	Base64: 1
 };
 
-/// Mouse Shape
 var EnumDWT_MouseShape = {
 	Default: 0,
 	Hand: 1,
 	Crosshair: 2,
 	Zoom: 3
-};
-
-/// Language
-var EnumDWT_Language = {
-	English: 0,
-	French: 1,
-	Arabic: 2,
-	Spanish: 3,
-	Portuguese: 4,
-	German: 5,
-	Italian: 6,
-	Russian: 7,
-	Chinese: 8
 };
 
 /**
@@ -2879,29 +2865,14 @@ Dynamsoft.WebTwain.prototype.ConvertToBase64 = function (indices, enumImageType,
 	/// <summary>Converts the images specified by the indices to base64.</summary>
     /// <param name="indices" type="Array">Indices specifies which images are to be converted to base64.</param>
 	/// <param name="enumImageType" type="EnumDWT_ImageType">The image format in which the images are to be converted to base64.</param>
-	/// <param name="asyncSuccessFunc" type="function">The function to call when the convert succeeds. Please refer to the function prototype OnSuccess.</param>
-    /// <param name="asyncFailureFunc" type="function">The function to call when the convert fails. Please refer to the function prototype OnFailure.</param>
+	/// <param name="asyncSuccessFunc" type="function">The function to call when the upload succeeds. Please refer to the function prototype OnSuccess.</param>
+    /// <param name="asyncFailureFunc" type="function">The function to call when the upload fails. Please refer to the function prototype OnFailure.</param>
     /// <returns type="bool"/>
 };
 
-Dynamsoft.WebTwain.prototype.ConvertToBlob = function (indices, enumImageType, asyncSuccessFunc, asyncFailureFunc){
-	/// <summary>Converts the images specified by the indices to binary.</summary>
-    /// <param name="indices" type="Array">Indices specifies which images are to be converted to binary.</param>
-	/// <param name="enumImageType" type="EnumDWT_ImageType">The image format in which the images are to be converted to binary.</param>
-	/// <param name="asyncSuccessFunc" type="function">The function to call when the convert succeeds. Please refer to the function prototype OnSuccess.</param>
-    /// <param name="asyncFailureFunc" type="function">The function to call when the convert fails. Please refer to the function prototype OnFailure.</param>
-    /// <returns type="bool"/>
-};
 
 Dynamsoft.WebTwain.prototype.GetImageURL = function (index, iWidth, iHeight){
 	/// <summary>Returns the direct URL of an image specified by index, if iWidth or iHeight is set to -1, you get the original image, otherwise you get the image with specified iWidth or iHeight while keeping the same aspect ratio.</summary>
-	/// <param name="index" type="short">The index of the image.</param>
-	/// <param name="iWidth" type="int">The width of the image.</param>
-	/// <param name="iHeight" type="int">The height of the image.</param>
-	/// <returns type="string"/>
-};
-Dynamsoft.WebTwain.prototype.GetImagePartURL = function (index, iWidth, iHeight){
-	/// <summary>Returns the URL of an image specified by index, if iWidth or iHeight is set to -1, you get the original image, otherwise you get the image with specified iWidth or iHeight while keeping the same aspect ratio.</summary>
 	/// <param name="index" type="short">The index of the image.</param>
 	/// <param name="iWidth" type="int">The width of the image.</param>
 	/// <param name="iHeight" type="int">The height of the image.</param>
