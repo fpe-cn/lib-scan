@@ -38109,13 +38109,13 @@ var Dynamsoft_OnClickInstallButton;
             setTimeout(f.__checkConfigLoaded, 100)
         }
     };
-    KISSY.ready(function(i) {
+    f.CheckConfigLoaded = function() {
         var j = d.get("J_waiting");
         if (j) {
             j.parentNode.removeChild(j)
         }
         f.__checkConfigLoaded()
-    })
+    };
 })(Dynamsoft.Lib, Dynamsoft.WebTwainEnv);
 
 module.exports.Dynamsoft = Dynamsoft
