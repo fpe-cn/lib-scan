@@ -70,9 +70,16 @@ module.exports.upload = function upload (config, strHTTPServer, strActionPage, i
             console.debug('Start uploading image n°' + (imageIndexBuffer + 1) + ' from buffer of ' + config.scannedImage.HowManyImagesInBuffer + ' images')
 
             const OnHttpUploadFailure = (errorCode, errorString, httpResponse) => {
-                const response = JSON.parse(httpResponse)
-                if(response.message.value.includes('Resource is created')) {
-                    resolve(true)
+                if(typeof httpRequest !== undefined) {
+                    try {
+                        const response = JSON.parse(httpResponse)
+                        if(response.message.value.includes('Resource is created')) {
+                            resolve(true)
+                        }
+                    } catch(e) {
+                        console.warn('fail (' + errorCode + ') on httpRequest : ' + errorString + httpResponse)
+                        reject(errorCode)
+                    }
                 } else {
                     console.warn('fail (' + errorCode + ') on httpRequest : ' + errorString + httpResponse)
                     reject(errorCode)
@@ -94,8 +101,8 @@ module.exports.upload = function upload (config, strHTTPServer, strActionPage, i
 
             if (config.format === 'pdf') {
                 config.scannedImage.SelectedImagesCount = 2
-                config.scannedImage.SetSelectedImageIndex(0, 0) // Set the 1st image as the first selected image.
-                config.scannedImage.SetSelectedImageIndex(1, 2) // Set the 3rd image as the second selected image.
+                config.scannedImage.SetSelectedImageIndex(0, 0)
+                config.scannedImage.SetSelectedImageIndex(1, 1)
                 config.scannedImage.GetSelectedImagesSize(4)
                 config.scannedImage.HTTPUploadThroughPostAsMultiPagePDF(strHTTPServer, strActionPage, uploadFilename + '.pdf', OnHttpUploadSuccess, OnHttpUploadFailure)
             }
