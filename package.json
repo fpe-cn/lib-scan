@@ -1,5 +1,5 @@
 {
-  "name": "scan",
+  "name": "lib-scan",
   "version": "1.0.1",
   "description": "Import scanner lib 12.3",
   "private": false,
