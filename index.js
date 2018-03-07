@@ -21,7 +21,6 @@ module.exports.install = function(config) {
 
     // Dyst.Dynamsoft.WebTwainEnv.CheckConfigLoaded()
     Dyst.Dynamsoft.WebTwainEnv.Load();
-    console.debug('stop install');
 }
 
 module.exports.load = function() {
