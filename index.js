@@ -1,4 +1,4 @@
-var Dyst = require('../lib-scan/assets/dynamsoft.webtwain.initiate.min.js');
+var Dyst = require('../lib-scan/assets/dynamsoft.webtwain.initiate.js');
 
 module.exports.uninstall = function(config) {
     console.debug('Uninstall dynamsoft');
@@ -80,7 +80,7 @@ module.exports.upload = function upload (config, strHTTPServer, strActionPage, i
                         reject(errorCode)
                     }
                 } else {
-                    console.warn('fail (' + errorCode + ') on httpRequest : ' + errorString + httpResponse)
+                    console.warn('fail (' + errorCode + ') on httpRequest : ' + errorString)
                     reject(errorCode)
                 }
             }
