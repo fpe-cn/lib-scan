@@ -35,11 +35,7 @@ module.exports.scan = function scan (config) {
 
             OnAcquireImageFailure = (errorCode, errorString) => {
                 console.warn('Scan image N°' + (config.scannedImage.CurrentImageIndexInBuffer + 2) + ' ==> failure')
-                if(errorString) {
-                    console.error('Error: ' + errorString);
-                }
                 config.scannedImage.CloseSource();
-                reject(errorCode)
             }
 
             OnAcquireImageSuccess = () => {
