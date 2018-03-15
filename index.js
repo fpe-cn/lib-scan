@@ -1,4 +1,4 @@
-var Dyst = require('../lib-scan/assets/dynamsoft.webtwain.initiate.js');
+var Dyst = require('../lib-scan/assets/V12_3/dynamsoft.webtwain.initiate.js');
 
 module.exports.uninstall = function(config) {
     console.debug('Uninstall dynamsoft');
