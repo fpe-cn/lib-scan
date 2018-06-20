@@ -7,17 +7,21 @@ module.exports.uninstall = function(config) {
 
 module.exports.install = function(config) {
     console.debug('Start install dynamsoft with : ' + JSON.stringify(config));
-    Dyst.Dynamsoft.WebTwainEnv.AutoLoad = config.AutoLoad;
+    Dyst.Dynamsoft.WebTwainEnv.AutoLoad = config.AutoLoad || false;
     Dyst.Dynamsoft.WebTwainEnv.Containers = config.Containers;
     Dyst.Dynamsoft.WebTwainEnv.ProductKey = config.ProductKey;
     Dyst.Dynamsoft.WebTwainEnv.LogLevel = config.LogLevel;
     Dyst.Dynamsoft.WebTwainEnv.Trial = config.Trial;
-    Dyst.Dynamsoft.WebTwainEnv.ActiveXInstallWithCAB = config.ActiveXInstallWithCAB;
+    Dyst.Dynamsoft.WebTwainEnv.ActiveXInstallWithCAB = config.ActiveXInstallWithCAB || false;
     Dyst.Dynamsoft.WebTwainEnv.ResourcesPath = config.ResourcesPath;
-    Dyst.Dynamsoft.WebTwainEnv.IfShowProgressBar = config.IfShowProgressBar;
-    Dyst.Dynamsoft.WebTwainEnv.IfShowUI = config.IfShowUI;
-    Dyst.Dynamsoft.WebTwainEnv.IfShowIndicator = config.IfShowIndicator;
-    Dyst.Dynamsoft.WebTwainEnv.ScanDirectly = config.ScanDirectly;
+    Dyst.Dynamsoft.WebTwainEnv.IfShowProgressBar = config.IfShowProgressBar || false;
+    Dyst.Dynamsoft.WebTwainEnv.IfShowUI = config.IfShowUI || false;
+    Dyst.Dynamsoft.WebTwainEnv.IfShowIndicator = config.IfShowIndicator || false;
+    Dyst.Dynamsoft.WebTwainEnv.ScanDirectly = config.ScanDirectly || true;
+    Dyst.Dynamsoft.WebTwainEnv.IfShowCancelDialogWhenImageTransfer = config.IfShowCancelDialogWhenImageTransfer || false;
+    Dyst.Dynamsoft.WebTwainEnv.IfFeederEnabled = config.IfFeederEnabled || false;
+    Dyst.Dynamsoft.WebTwainEnv.IfDuplexEnabled = config.IfDuplexEnabled || false;
+    Dyst.Dynamsoft.WebTwainEnv.IfDisableSourceAfterAcquire = config.IfDisableSourceAfterAcquire || true;	// Scanner source will be disabled/closed automatically after the scan.
 
     // Dyst.Dynamsoft.WebTwainEnv.CheckConfigLoaded()
     Dyst.Dynamsoft.WebTwainEnv.Load();
@@ -44,13 +48,8 @@ module.exports.scan = function scan (config) {
             }
 
             config.scannedImage.OpenSource();
-            config.scannedImage.IfShowUI = false;
-            config.scannedImage.IfShowProgressBar = false;
-            config.scannedImage.IfShowIndicator = false;
-            config.scannedImage.PixelType = Dyst.EnumDWT_PixelType.TWPT_RGB;
+            config.scannedImage.PixelType = Dyst.EnumDWT_PixelType.TWPT_RGB; // 2
             config.scannedImage.Resolution = config.resolution;
-            config.scannedImage.IfDisableSourceAfterAcquire = true;	// Scanner source will be disabled/closed automatically after the scan.
-
             config.scannedImage.AcquireImage(OnAcquireImageSuccess, OnAcquireImageFailure);
         }
     })
