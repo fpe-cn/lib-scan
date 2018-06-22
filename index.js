@@ -48,7 +48,11 @@ module.exports.scan = function scan (config) {
             }
 
             config.scannedImage.OpenSource();
+            config.scannedImage.IfShowUI = false;
+            config.scannedImage.IfShowProgressBar = false;
+            config.scannedImage.IfShowIndicator = false;
             config.scannedImage.PixelType = Dyst.EnumDWT_PixelType.TWPT_RGB; // 2
+            config.scannedImage.IfDisableSourceAfterAcquire = true;	// Scanner source will be disabled/closed automatically after the scan.
             config.scannedImage.Resolution = config.resolution;
             config.scannedImage.AcquireImage(OnAcquireImageSuccess, OnAcquireImageFailure);
         }
