@@ -1,6 +1,6 @@
 {
   "name": "lib-scan",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Import scanner lib 12.3",
   "private": false,
   "main": "index.js",
