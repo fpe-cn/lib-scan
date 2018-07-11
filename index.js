@@ -53,6 +53,7 @@ module.exports.scan = function scan (config) {
             config.scannedImage.IfShowIndicator = false;
             config.scannedImage.IfFeederEnabled = false;
             config.scannedImage.IfDuplexEnabled = false;
+            config.scannedImage.IfAutomaticBorderDetection = false;
             config.scannedImage.PixelType = Dyst.EnumDWT_PixelType.TWPT_RGB; // 2
             config.scannedImage.IfDisableSourceAfterAcquire = true;	// Scanner source will be disabled/closed automatically after the scan.
             config.scannedImage.Resolution = config.resolution;
