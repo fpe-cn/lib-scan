@@ -3,6 +3,7 @@ var Dyst = require('../lib-scan/assets/V12_3/dynamsoft.webtwain.initiate.js');
 module.exports.uninstall = function(config) {
     console.debug('Uninstall dynamsoft');
     Dyst.Dynamsoft.WebTwainEnv.Unload();
+    Dyst.Dynamsoft.WebTwainEnv.DeleteDWTObject();
 }
 
 module.exports.install = function(config) {
