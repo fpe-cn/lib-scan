@@ -33,14 +33,15 @@ module.exports.load = function() {
 }
 
 module.exports.scan = function scan (config) {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         if (config.scannedImage) {
 
             var OnAcquireImageSuccess, OnAcquireImageFailure;
 
             OnAcquireImageFailure = (errorCode, errorString) => {
-                console.warn('Scan image N°' + (config.scannedImage.CurrentImageIndexInBuffer + 2) + ' ==> failure')
-                config.scannedImage.CloseSource();
+                const message = `Scan image N° ${config.scannedImage.CurrentImageIndexInBuffer + 2} ==> failure`;
+                console.warn(message);
+                reject(message);
             }
 
             OnAcquireImageSuccess = () => {
