@@ -12,6 +12,10 @@ var Dynamsoft = Dynamsoft || {
     Lib: {},
     WebTwainEnv: {}
 };
+
+window.Dynamsoft = Dynamsoft
+
+
 if (!Dynamsoft.WebTwainEnv) Dynamsoft.WebTwainEnv = {};
 Dynamsoft.WebTwainEnv.IfUseActiveXForIE10Plus = false;
 var KISSY = function(b) {
@@ -18862,6 +18866,9 @@ var EnumDWT_PlatformType = {
     enumMac: 1,
     enumLinux: 2
 };
+
+window.EnumDWT_PlatformType = EnumDWT_PlatformType;
+
 var EnumDWT_UploadDataFormat = {
     Binary: 0,
     Base64: 1
@@ -37419,7 +37426,7 @@ var Dynamsoft_OnClickInstallButton;
             }
             if (d.isFunction(q.OnWebTwainNotFoundOnMacCallback)) {
                 var o = d.product.bChromeEdition ? d.product.getChromeEditionPath() : d.product.getPKGPath();
-                OnWebTwainNotFoundOnMacCallback(d.product.name, o, d.product.bChromeEdition, d.env.bIE, d.env.bSafari, d.detect.ssl, d.env.strIEVersion)
+                q.OnWebTwainNotFoundOnMacCallback(d.product.name, o, d.product.bChromeEdition, d.env.bIE, d.env.bSafari, d.detect.ssl, d.env.strIEVersion)
             }
         } else {
             if (d.env.bLinux) {
@@ -37474,7 +37481,7 @@ var Dynamsoft_OnClickInstallButton;
                         } else {
                             o = d.product.bChromeEdition ? d.product.getChromeEditionPath() : d.product.getMSIPath()
                         }
-                        OnWebTwainNotFoundOnWindowsCallback(d.product.name, o, d.product.bChromeEdition, d.env.bIE, d.env.bSafari, d.detect.ssl, d.env.strIEVersion)
+                        q.OnWebTwainNotFoundOnWindowsCallback(d.product.name, o, d.product.bChromeEdition, d.env.bIE, d.env.bSafari, d.detect.ssl, d.env.strIEVersion)
                     }
                 }
             }
